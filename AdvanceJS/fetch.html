@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+        background-color: teal;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        
+        }
+        img{
+            width: 300px;
+            height: 500px;
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
+<script>
+    let url = "https://dog.ceo/api/breeds/image/random"
+
+    function myApi(){
+       for(let x =0;x < 10; x++ ){
+         fetch(url)
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            let image = document.createElement('img');
+            image.src = res.message
+            document.querySelector('div').append(image)
+            console.log(res.message)
+            //return res.json()
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+       }
+    }
+    myApi()
+</script>
